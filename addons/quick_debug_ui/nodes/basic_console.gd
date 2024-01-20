@@ -1,11 +1,19 @@
-extends Node
+@tool
+extends VBoxContainer
 
+@onready var rtb : RichTextLabel
+@onready var input : LineEdit
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	rtb = RichTextLabel.new()
+	input = LineEdit.new()
+	rtb.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	add_child(rtb)
+	add_child(input)
+	
+	input.text_submitted.connect(handle_command)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func handle_command(command: String) -> void:
 	pass
+
